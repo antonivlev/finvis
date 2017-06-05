@@ -1,0 +1,57 @@
+<html>
+	<head>
+		<title>finvis</title>
+
+		<script src="https://d3js.org/d3.v4.min.js"></script>
+		<script src="https://d3js.org/d3-axis.v1.min.js"></script>
+		<script src="https://d3js.org/d3-path.v1.min.js"></script>
+		<script src="https://d3js.org/d3-color.v1.min.js"></script>
+		<script src="https://d3js.org/d3-dispatch.v1.min.js"></script>
+		<script src="https://d3js.org/d3-ease.v1.min.js"></script>
+		<script src="https://d3js.org/d3-interpolate.v1.min.js"></script>
+		<script src="https://d3js.org/d3-selection.v1.min.js"></script>
+		<script src="https://d3js.org/d3-timer.v1.min.js"></script>
+		<script src="https://d3js.org/d3-transition.v1.min.js"></script>
+		<script src="https://d3js.org/d3-drag.v1.min.js"></script>
+		<script src="https://d3js.org/d3-zoom.v1.min.js"></script>
+		<script src="https://d3js.org/d3-brush.v1.min.js"></script>
+
+		<script src="https://unpkg.com/vue"></script>
+
+		<link rel="stylesheet" href="style.css">
+	</head>
+
+	<body>	
+		<div id="nav_div" style="position:absolute;left:0;margin-right:75%">
+<!-- 			<div id="view-data">
+				<ul>
+					<div v-for="rule in rules" :key="rule.id"><span>{{ rule }}</span><br></div>
+				</ul>
+			</div>
+ -->
+
+			<div id="simple-input">
+				Wriete rules here like: asda --> food
+				<special-input 
+					v-for="rule in rules" 
+					:key="rule.id"
+					:rule_id="rule.id" 
+					:rule='rule.text'
+					v-on:closeit="deleteRule"
+					v-on:ruleupdate="updateRule">
+				</special-input>	
+			</div>
+		
+
+		</div>
+
+
+
+		<div id="content-div" style="margin-left:25%">
+		</div>
+
+
+		<script src="vue_tut.js"></script>
+		<script src="sunburst.js"></script>
+	</body>
+</html>
