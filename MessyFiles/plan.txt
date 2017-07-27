@@ -1,0 +1,59 @@
+task: 
+	recognise human activity from any data source
+
+approach1:
+	fit workers with accelerometers capturing their activities
+		data gathered
+	teach algorithm to recognise activities from data
+		break data into segments
+		each segment belongs to activity
+		feed lots of examples
+		concern:
+			classification does not take into account surrounding signal, discrete independent snippets
+
+approach2:
+	detect repeating patters
+		by autocorrelation. study it. fourier as well, it is all linked.
+	classify repeated patterns
+		concern: 
+			may be unable to classify short repeated patterns e.g. steel fixing. 
+            Need to check how short the repetition has to be. 
+
+approach3:
+    problem is similar to speech recognition
+        investigate RNNs
+
+
+final approach:
+    gavin's data, 3 classes: walk, steel fix, null
+    explore windows. split into train and test data. vary:
+        - window size
+        - handcrafted features 
+        - classifier (SVM, NN, knn)
+        - dim reduction (PCA, t-sne)
+        and see separation
+    once that is done, compare with RNN approaches
+
+
+data verification, knn:
+    legend:
+    	1 blue
+    	2 red
+    features are:
+        Average in each dimension [1 * n_dim]
+        Standard deviation in each dimension [1 * n_dim]
+        Average Absolute Difference  [1 * n_dim]
+        Average Resultant Acceleration [1]
+   
+        #Plus window index
+        #Start time
+        #Window size
+    Can we use PCA to visualise clusters? What does PCA do?
+    	figure out
+            eigenvectors, eigenvalues, diagonalisation, svd
+    If we can use PCA to identify clusters, make a visualisation framework (look at jupyter, glueviz, orange3 first):
+    	mouse over point, see corresponding window
+    	see decision boundary drawn by NN in feature space
+    		ONLY if NNs do what i think they do, i.e. extract their own features (ask Graham)
+    	add handcrafted features, see changes on the fly
+    	maybe select time segments
